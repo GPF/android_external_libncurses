@@ -169,7 +169,11 @@ LOCAL_MODULE:= libncurses
 LOCAL_PRELINK_MODULE := false
 LOCAL_SHARED_LIBRARIES := libdl
 
+ifeq ($(NCURSES_BUILD_STATIC),true)
+include $(BUILD_STATIC_LIBRARY)
+else
 include $(BUILD_SHARED_LIBRARY)
+endif
 
 # ========================================================
 include $(call all-makefiles-under,$(LOCAL_PATH))
